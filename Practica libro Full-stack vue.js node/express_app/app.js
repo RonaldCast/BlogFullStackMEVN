@@ -4,6 +4,8 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var User = require("./Models/User")
+
 
 /**var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -13,6 +15,10 @@ var usersRouter = require('./routes/users');
 
 var fs = require('file-system');
 var app = express();
+
+
+require("./Models/database")
+//----------------------------------------------------------------------------
 //include controller
 //Configuracion del controlador 
 /**
@@ -24,7 +30,7 @@ var app = express();
 fs.readdirSync('controllers').forEach( function(file) {
       if(file.substr(-3) == '.js'){
       const route = require('./controllers/' + file)
-      route.controller(app)
+       route.controller(app)
     }
 });
 

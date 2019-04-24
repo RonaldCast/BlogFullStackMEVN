@@ -1,0 +1,3 @@
+> Para crear un package.json: npm init o npm init -y
+> modulo de cors: para comunicar dos servidores
+> modulo fakers: son sirve para general datos de prueba 

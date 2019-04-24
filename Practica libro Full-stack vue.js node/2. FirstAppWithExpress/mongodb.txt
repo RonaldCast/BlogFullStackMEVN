@@ -1,0 +1,27 @@
+> crear una coleccion en mongodb: db.createCollection("nameCollection")
+> Para Agregar un solo ducumento en la coleccion: db.userd.insertOne({value en json})
+> Para insertar mas de un documento: db.users.insertMany([{},{},{}])
+> insert(): realiza en trabajo de insertOne () y insertMany ().
+> Para extraer los documentos de una coleccion: db.users.find();
+    ► filtrar por un parametro: db.users.find({nombre:"mike"})
+    ► la coma como operador AND db.users.find({name: "John", email:"john@mono.com"}).pretty()
+    ► Condicional OR:  db.users.find({$or:[{email:"john@mono.com"},{name:"Jack"}]}).pretty()
+> Para actualizar un documento existen tres metodos:  db.users.update()
+    ► db.users.update() las dos funciones que one y many.
+    ► db.users.updateOne(): solo actualiza el primer documento que coinciden
+    ► db.users.updateMany(): actualiza todo los documentos que coinciden 
+    ► Ejemplo: 
+> Para eliminar un documento se usa: 
+    ►db.users.deleteOne()
+    ►db.users.deleteMany()
+    ►db.users.remove({valor a eliminar},cantidad de registro)
+    ► db.users.remove({}): para eliminar todo los documento 
+
+> El like en mongo:  db.users.find({name:/.*J.*/}) / para buscar se puede usar expresiones regulares 
+
+
+
+
+
+
+

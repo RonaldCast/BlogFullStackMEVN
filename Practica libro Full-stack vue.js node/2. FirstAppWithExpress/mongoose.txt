@@ -1,0 +1,300 @@
+> Mongoose: nos permite agregar validaciones de una manera facil 
+e integral mongo a un documento. Mongoose requiere una cantidad fija de campos 
+ejemplo:
+
+const UserSchema = new Schema({
+    name: String,
+    bio: String,
+    extras:{} // este puede tomar un objeto JSON que puede tener valore anidados
+});
+
+> Instalacion de Mongoose 
+npm install mongoose --save
+> para tenerlo en nuestro archivo se pone 
+var mongoose = requiere('mongoose')
+
+> Connection a mongoose 
+
+mongoose.connect('mongodb://localhost:3000/express_app', () =>{
+  console.log('Connection has been made')
+})
+.catch((err) => {
+  console.log(`app starting error: ${err.stack}`); 
+  process.exit(1)
+})
+
+> creando usuario 
+
+const user_resource = new User({
+ name: 'John Doe',
+ email: 'john@doe.com'
+})
+
+
+> Guardando usuario 
+
+user_resource.save((error) => {
+ if(error)
+ console.log(error);
+ res.send({
+ success: true,
+ code: 200,
+ msg: "User added!"
+ })
+})
+
+//*****************************************************************************//
+//                         Buscar registro                                     //
+//*****************************************************************************//
+
+
+> para realizar la busqueda de las colecciones: find({},'elementoABuscar, function()') : devuelve 
+una matriz de registro.
+
+**primer parametro
+**-toda la coleccion: {}
+**-solo los documentos con name: 'samuel': {name: 'samuel'express.text}
+
+**segundo parametro: campos que se recuperan de la base de datos. 
+**-solo el nombre: 'name'
+
+User.find({}, 'name email', function(error, users){
+    if(error){
+        console.log(error)
+    }
+    res.send({
+        users: users
+    })
+})
+
+> Para obtener un registro se usa .findByID, o findOne: devuelven un solo objeto 
+
+User.findById(1, 'name email', function (error, user) {
+ if (error) { console.error(error); }
+ res.send(user)
+})
+
+
+//*****************************************************************************//
+//                     actualizar registro                                     //
+//*****************************************************************************//
+
+Mongoose primero debe de buscar el registro luego debe de guardarlo: ejemplo
+
+User.findById(1, 'name email', function (error, user) {
+ if (error) { console.error(error); }
+ user.name = 'Peter'
+ user.email = 'peter@gmail.com'
+ user.save(function (error) { // save sobreescribe el valor usado antes  
+ if (error) {
+ console.log(error)
+ }
+ res.send({
+ success: true
+ })
+ })
+})
+
+//*****************************************************************************//
+//                     actualizar registro  un solo                            //
+//*****************************************************************************//
+
+
+
+User.findOneAndUpdate({name:'peter'}, {$set: {name: "Ramon"}},function(err){
+    if(err)
+        console.log(err);
+})
+
+// para devolver algunas el objecto 
+
+User.findOneAndUpdate({name: 'Peter'}, { $set: { name: "Sara" } },
+function(err, user){
+ if(err){
+ console.log(err);
+ }
+ res.send(user);
+});
+
+//*****************************************************************************//
+//                 actualizar registro  un solo      findByIdAndUpdate()       //
+//*****************************************************************************//
+
+//el primer parametro es el id pero en valor entero. 
+User.findByIdAndUpdate(1, { $set: { name: "Sara" } }, function(err){
+ if(err){
+ console.log(err);
+ }
+});
+
+//*****************************************************************************//
+//                     Eleminar documentos                                     //
+//*****************************************************************************//
+
+ remove(): borra el usuario que tiene el _id: 1 
+User.remove({
+ _id: 1
+}, function(err){
+ if (err)
+ res.send(err)
+ res.send({
+ success: true
+ })
+})
+
+//*****************************************************************************//
+//                     Eleminar documentos                                     //
+//*****************************************************************************//
+findOneAndRemove(): lo mismo que remove, la diferencia entre estos dos es que 
+este devuelve el documento que se elimino 
+
+User.findOneAndRemove({
+ _id: 1
+}, function(err){
+ if (err)
+ res.send(err)
+ res.send({
+ success: true
+ })
+})
+
+User.findOneAndRemove({
+ _id: 1
+}, function(err, user){
+ if (err)
+ res.send(err)
+ res.send({
+ success: true,
+ user: user
+ })
+})
+
+//*****************************************************************************//
+//                     Eleminar documentos                                     //
+//*****************************************************************************//
+
+findByIdAndRemove(): lo mismo que findOneRemove, pero siempre se necesita de pasar
+un identificador como parametro y toma un valor entero
+
+User.findByIdAndRemove(1, function(err){
+ if (err)
+ res.send(err)
+ res.send({
+ success: true
+ })
+})
+
+//*****************************************************************************//
+//                      Validando con Mongoose                                 //
+//*****************************************************************************//
+
+> Las validadciones en mongoose se defines a nivel de esquema
+
+
+Entonces, si queremos agregar una validación requerida (), 
+el código debe ser modificado de esta manera.
+
+var UserSchema = new Schema({
+ name: {
+ required: true
+ },
+ email: {
+ required: true
+ }
+});
+
+También podemos pasar un mensaje cuando la
+ validación devuelve un error. Por ejemplo
+
+var UserSchema = new Schema({
+ name: {
+ required: [true, 'Let us know you by adding your name!']
+ },
+ email: {
+ required: [true, 'Please add your email as well.']
+ }
+});
+
+> Type de validaciones 
+
+String: tiene varias validaciones como; enum, match, maxlength y minlenght
+
+Numbers: Los numeros tiene dos validaciones min y max 
+
+> personalinzar validaciones 
+
+var userSchema = new Schema({
+ phone: {
+ type: String,
+ validate: {
+ validator: function(v) {
+ return /\d{3}-\d{3}-\d{4}/.test(v);
+ },
+ message: '{VALUE} is not a valid phone number!'
+ }
+ }
+});
+
+> las validaciones tambien puenden ser anidadas: Primero, 
+definimos el esquema para un objeto de bajo nivel,
+que es primero_name y last_name. Luego, para el userSchema,
+pasamos el nameSchema para el campo de nombre.
+
+var nameSchema = new Schema({
+ first_name: String,
+ last_name: String
+});
+userSchema = new Schema({
+ name: {
+ type: nameSchema,
+ required: true
+ }
+});
+URL de mongoose:
+ http://mongoosejs.com/docs/validation.html.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
