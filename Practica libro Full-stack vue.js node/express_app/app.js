@@ -1,10 +1,12 @@
 var createError = require('http-errors');
 var express = require('express');
+var bodyParser = require('body-parser');
+var favicon = require('serve-favicon');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
 var User = require("./Models/User")
+var chalk = require('chalk')
 
 
 /**var indexRouter = require('./routes/index');
@@ -15,9 +17,12 @@ var usersRouter = require('./routes/users');
 
 var fs = require('file-system');
 var app = express();
-
-
 require("./Models/database")
+
+// se usa par amandar objeto mediante el metodo post y put 
+// es de suma importantacia para leer los json que se envian. 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 //----------------------------------------------------------------------------
 //include controller
 //Configuracion del controlador 
@@ -39,6 +44,7 @@ fs.readdirSync('controllers').forEach( function(file) {
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -73,7 +79,7 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
  
-app.listen(3000, function(){console.log("http://localhost:3000/")})
+app.listen(3000, function(){console.log(chalk.blue("http://localhost:3000/"))})
 
 
 

@@ -1,0 +1,74 @@
+>Que es una Api?
+se aquello que se utiliza para obtener informacion
+o datos de una aplicacione. 
+> Que son las Api web?
+Es una forma de servicios web que proporcionan una interfaz
+para comunicarse entre varias aplicaciones. Los datos de una
+aplicacion se envian a otra aplicacion atraves de un protocolo HTTP
+utilizando dichas API.
+Existe API privada y publicas. 
+
+> Que es REST? 
+es un servicio web utilizado para intercambiar datos entre múltiples 
+aplicaciones a través de un protocolo HTTP. 
+
+> HTTP verbos: Los verbos HTTP son los métodos de solicitud que hacen posible la comunicación entre múltiples aplicaciones. Estos verbos HTTP permiten realizar varias acciones en un recurso sin necesidad de modificar las URL por completo.
+
+GET: READ que solo obtiene la información y eso es todo.
+    GET http://www.example.com/users
+    GET http://www.example.com/users/{user_id}
+
+POST: CREAR crea un nuevo registro. 
+      http://www.example.com/users/
+PUT: se utiliza para crear o actualizar un registro. 
+    PUT http://www.example.com/users/
+
+DELETE: se utiliza para eliminar recursos de la coleccion 
+    DELETE http://www.example.com/users/{user_id}
+
+> HTTP estados: Los códigos de estado son parte de una respuesta realizada por el servidor para una solicitud realizada a ese servidor. Indica el estado de una solicitud, independientemente de si se ejecutó correctamente o no. Los códigos de estado tienen tres dígitos. El primer dígito representa la clase o la categoría de esa respuesta.
+ Los códigos de estado HTTP van desde 100-500. 
+
+ 2XX codes: exito
+    200 OK: devulve el recuros  de la solicitud 
+    201 Created: creacion de un recuros
+    204 No Content: no de vuelve nada. 
+
+4XX codes: error del lado dle cliente
+    400 Bad Request: cuando la sintaxis esta mal 
+    401 Unauthorized: Cuando un aparte no autorizada intenta enviar la solicitud de la APi 
+    403 Forbidden: los mismo que 401 pero cuando se posee diferentes configuracaciones de autorizaciones
+    404 Not Found: cuando el servidor np en cuentra el recurso 
+
+5XX codes: nos informa que hay algo mal con la ejecucion de la accion
+    500 Internal Server Error: cuando la accion no se ejecuta de manera correcta 
+    503 Service Unavailable: cuando el servidor no se esta ejecutando
+    504 Gateway Timeout: se envió la solicitud, pero no se tuvo la respuesta en tiempo
+    dado.  
+
+//***************************************************************//
+                     Introcción a Postman
+//***************************************************************//
+
+> Que es postman: 
+Postman es una herramienta que nos permite desarrollar y 
+probar nuestras API más rápido. Esta herramienta proporciona una GUI que facilita la configuración más rápida de nuestras API, lo que 
+disminuye el tiempo de desarrollo de nuestras API. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

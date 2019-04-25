@@ -10,12 +10,12 @@ const UserSchema = new Schema({
     email:{
         type: String,
         required: [true, "Error al ingresar el email debe de establecerse"],
-        validate:{
+        /*validate:{
             validator: (v) => {
-                return /[a-z0-9]{1,}@[a-z0-9]\.[a-z]{2,5}/.test(v)
+                return /[a-z0-9]@[a-z0-9]\.[a-z]{2,5}/.test(v)
             },
             message: '{VALUE} is not valid'
-        }
+        }*/
     }   
 });
 //para crear el modelo en si, con el esquema de mongoose. 
