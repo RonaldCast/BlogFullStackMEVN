@@ -1,0 +1,46 @@
+ESLint: Su función es analizar el código de nuestra aplicación, 
+
+detectar problemas en por medio de patrones y si esta a su alcance resolverlos él mismo.
+Para test: nightwatch.js, Karma, Mocha,
+
+> para instalar vuetify y bootstrap 
+ npm install bootstrap bootstrap-vue vuetify --save
+
+ > luego en el main.js se pone
+ import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+import BootstrapVue from 'bootstrap-vue';
+
+import vuetify from 'vuetify';
+
+Vue.use(BootstrapVue)
+Vue.use(vuetify)
+
+
+> En el index.html se nececita lo siguiente 
+<link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet"> 
+
+> Como usa los iconos de Material se debe de poner los siguinete
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" rel="stylesheet">
+
+> En lazandolo con el servidor INVESTIGAR MAS SOBRE ESTOS 
+
+paquetes a instalar, luego de instalar express:
+
+> body-parser: para analizar la solicitud entrante 
+> cors: Para manejar solicitudes de origen cruzado entre frontend y backend
+> morgan: Registrador de solicitudes HTTP
+> mongoose: modelado de objeto de mongo 
+
+Para a;adir modales se usa vue-swal
+>Instalar: npm install vue-swal --save
+También hay varios otros paquetes para las alertas de mensajes, como vue-flash, vuex-flash y sweet-alert.
+
+Componente para calificar: vue-star-rating,
+>Instalacion 
+$ npm install vue-star-rating --save
+Ejemplo: https://jsfiddle.net/anteriovieira/8nawdjs7/.
+
+
+> Vue.extend () es un método de herencia de clases. 
+Su tarea es crear una subclase de Vue y devolver el constructor.

@@ -36,7 +36,7 @@ DELETE: se utiliza para eliminar recursos de la coleccion
 
 4XX codes: error del lado dle cliente
     400 Bad Request: cuando la sintaxis esta mal 
-    401 Unauthorized: Cuando un aparte no autorizada intenta enviar la solicitud de la APi 
+    401 Unauthorized: Cuando una parte no autorizada intenta enviar la solicitud de la APi 
     403 Forbidden: los mismo que 401 pero cuando se posee diferentes configuracaciones de autorizaciones
     404 Not Found: cuando el servidor np en cuentra el recurso 
 

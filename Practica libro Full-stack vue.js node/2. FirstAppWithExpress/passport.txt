@@ -1,0 +1,35 @@
+> PassPort.js: nos ayuda a autentificar a los usuario de nuestra aplicacion 
+nos proporciona configuraciones para porder autentificar. 
+passport.js es un middleware proporcionado por Node.js para la autenticación.
+
+
+> La funcionalidad de passport.js es autenticar las solicitudes que se realizan al servidor.
+ Proporciona varias estrategias para la autenticación. passport.js proporciona estrategias como estrategia local,
+  estrategia de Facebook, estrategia de Google, estrategia de Twitter y estrategia de JWT.
+ 
+ >JWT es una forma de autenticar las solicitudes
+  utilizando un enfoque basado en token.
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVhNjhhNDMzMDJkMWNlZDU5YjExND
+g3MCIsImlhdCI6MTUxNzI0MjM1M30.5xY59iTIjpt9ukDmxseNAGbOdz6weWL1drJkeQzoO3M
+
+> Si observa detenidamente el token anterior, 
+verá que el token tiene tres partes separadas por un punto (.);
+Cada parte tiene su propio significado: 
+la primera parte representa el encabezado 
+La segunda parte representa
+la carga útil La tercera parte representa la firma
+
+> Para Instalar: JWT (Json Web Token)
+npm install jsonwebtoken --save
+
+> para instalar passport.js
+$ npm install passport --save
+
+> Para las extrategias de passport se debe de instalar
+$ npm install passport-jwt --save
+
+> Paquete para sifrar la contraseña
+$ npm install bcryptjs --save
+
+
