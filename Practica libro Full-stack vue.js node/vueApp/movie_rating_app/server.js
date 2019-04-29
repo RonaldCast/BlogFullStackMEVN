@@ -1,4 +1,7 @@
 /* eslint-disable */
+const config = require('./config/Config')
+const session = require('express-session')
+
 // para el historial de la rutas 
 const history = require('connect-history-api-fallback')
 
@@ -36,18 +39,27 @@ app.use(history())
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(cors());
+
+//configuracion de a sesion. 
+app.use(session ({
+    secret: config.SECRETE,
+    resave: true,
+    saveUninitialized: true,
+    cookie: {httpOnly: false}
+}))
 //usando passport inicializado 
 app.use(passport.initialize());
+app.use(passport.session())
 
-mongoose.connect('mongodb://localhost/movie_rating_app', {
+//mongodb://localhost/movie_rating_app
+mongoose.connect(config.DB, {
     useNewUrlParser: true
 })
- .then(db => console.log("DB is connected"))
+.then(db => console.log("DB is connected"))
 .catch(err => {
     console.error('App starting error:', err.stack);
     process.exit(1);
 })
-
 
 
 //include controllers
@@ -64,12 +76,42 @@ fs.readdirSync("controllers").forEach(function(file){
 //entonces la aplicacione va a correr por un puerto. 
 app.use(serveStatic(__dirname + "/dist"))
 
-router.get('/', (req, res) =>{
-    res.json( {message: 'API Initalized'} );
+
+//ruta con session para obtener el usuario actual registrado 
+router.get('/api/current_user', isLoggedIn, (req, res) => {
+    if(req.user){
+        res.send({current_user: req.user})
+    }else{
+        res.status(403).send({seccess: false, msg: 'Unauthorized.'});
+    }
+})
+// funcion para inicisar sesion
+// y obtener los datos del usuario
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+
+    res.redirect('/')
+    console.log('erro! auth failed')
+}
+
+// ruta para salir de la sesion
+router.get('/api/logout', (req, res) => {
+    req.logout();
+    res.send();
+})
+
+//ruta ordinaria 
+router.get('/', (req, res) => {
+  res.json({
+    message: 'API Initalized'
+  });
 });
+
 
 const port = process.env.API_PORT || 8081;
 app.use('/', router);
 app.listen(port, function() {
-    console.log(`api running on port ${port}`, "http://localhost:8082")
+    console.log(`api running on port ${port}`, "http://localhost:8081")
 })

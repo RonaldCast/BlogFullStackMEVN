@@ -22,7 +22,7 @@ la carga útil La tercera parte representa la firma
 
 > Para Instalar: JWT (Json Web Token)
 npm install jsonwebtoken --save
-"
+
 > para instalar passport.js
 $ npm install passport --save
 
@@ -46,4 +46,7 @@ $ npm install connect-history-api-fallback --save
 > Las estrategia local de passport 
 $npm install passport-local -s
 
+> Para que los datos del usuario pueda almacenarse en la sesion y recuperase facilmente 
+se debe de installar el paquete express-session
+$ npm install express-session --save
 

@@ -4,6 +4,9 @@ const User = require("../models/User");
 //const config = require('./../config/confing');
 const passport = require('passport');
 
+//requeriendo la estrategia local 
+const LocalStrategy = require('passport-local').Strategy;
+
 // configuracion para que el usuario inicie sesion
 
 const passwordJWT = require('passport-jwt')
@@ -15,6 +18,46 @@ jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt')
 jwtOptions.secreteOrKey = 'thisisthesecretkey'
 
 module.exports.controller = (app) => {
+//loca strategy: configuracion 
+passport.use(new LocalStrategy ({
+    usernameField: 'email',
+    passwordField: 'password',
+}, (email, password, done) => {
+     
+    User.getUserByEmail(email, (err, user) => {
+        if(err){
+            return done(err)
+        }
+        if(!user){
+            return done(null, user)
+        }
+        User.comparePassword(password, user.password, (error, isMatch) => {
+            if(isMatch){
+                return done(null, user)
+            }
+            return done(null, false)
+
+        });
+        return true;
+    })
+}))
+
+// login user
+app.post('/users/login', passport.authenticate('local', {failureRedirect: 'users/login'}), (req, res) => {
+    res.redirect('/')
+})
+
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
+});
+passport.deserializeUser(function (id, done) {
+  User.findById(id, function (err, user) {
+    done(err, user)
+  })
+});
+ 
+
+
 app.post('/users/register', (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
@@ -41,18 +84,6 @@ app.post('/users/register', (req, res) => {
 })
 
 //login a user 
-app.post('/users/login', passport.authenticate('local', {failureRedirect: 'users/login'}), (req, res) => {
-    res.redirect('/')
-})
-
-passport.serializeUser(function (user, done) {
-  done(null, user.id);
-});
-passport.deserializeUser(function (id, done) {
-  User.findById(id, function (err, user) {
-    done(err, user)
-  })
-});
 
 
 //login a user 
