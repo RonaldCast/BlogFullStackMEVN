@@ -12,6 +12,9 @@
 </template>
 <script>
 /* eslint-disable */
+
+import axios from 'axios';
+
 export default {
 
     data() {
@@ -35,8 +38,8 @@ export default {
                         email: this.email,
                         password: this.password
                     },
-                    url:'http://localhost:8082/users/register',
-                    header:{
+                    url:'/users/register',
+                    headers:{
                         'Content-Type':'application/json',
                     },
                 })

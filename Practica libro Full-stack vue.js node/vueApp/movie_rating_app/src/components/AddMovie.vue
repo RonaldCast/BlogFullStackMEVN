@@ -71,7 +71,7 @@
                 release_year: parseInt(this.release_year),
                 genre: this.genre,
               },
-              url: 'http://localhost:8082/movies',
+              url: '/movies',
               headers: {
                 'Content-Type': 'application/json'
               }

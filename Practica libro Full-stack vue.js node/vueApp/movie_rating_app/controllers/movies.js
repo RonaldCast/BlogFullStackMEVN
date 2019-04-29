@@ -2,7 +2,7 @@
 'use strict'
 const Movie = require('../models/Movie')
 const Rating = require('../models/Rating')
-
+const passport = require('passport')
 module.exports.controller = (app) =>{
 
     //fetch all movie 
@@ -10,9 +10,21 @@ module.exports.controller = (app) =>{
        Movie.find({}, 'name description release_year genre', (err, movies ) =>{
         if(err)
             console.log(err)   
-        res.send({movies})
+        res.send({movies: movies})
        })
      })
+    // para ver si el usuario esta autorizado
+     /*app.get('/movies', passport.authenticate('jwt', {
+           session: false
+         }), (req, res) => {
+
+        Movie.find({}, 'name description release_year genre', (error, movies) => {
+            if(error)
+            console.log(error)
+
+            res.send({movies})
+        })
+     })*/
 
     //add ane movie
     app.post('/movies', (req, res) => {

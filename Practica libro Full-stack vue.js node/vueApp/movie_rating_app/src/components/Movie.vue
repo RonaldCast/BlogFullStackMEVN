@@ -81,7 +81,7 @@ export default {
                     data:{
                         rate:stare.note
                     },
-                    url:`http://localhost:8081/movies/rate/${movieId}`,
+                    url:`http://localhost:8082/movies/rate/${movieId}`,
                     headers:{
                         'Content-Type': 'application/json'
                     }

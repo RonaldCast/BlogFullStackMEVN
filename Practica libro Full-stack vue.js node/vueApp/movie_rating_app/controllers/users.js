@@ -1,6 +1,8 @@
 /* eslint-disable */
 
 const User = require("../models/User");
+//const config = require('./../config/confing');
+const passport = require('passport');
 
 // configuracion para que el usuario inicie sesion
 
@@ -13,15 +15,17 @@ jwtOptions.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme('jwt')
 jwtOptions.secreteOrKey = 'thisisthesecretkey'
 
 module.exports.controller = (app) => {
-app.post('/users/registre', (req, res) => {
+app.post('/users/register', (req, res) => {
     const name = req.body.name;
     const email = req.body.email;
     const password = req.body.password;
+    const role = req.body.role;
     
     const newUser = new User({
         name,
         email,
-        password
+        password,
+        role
     });
 
     User.createUser(newUser, (error, user) => {
@@ -37,7 +41,22 @@ app.post('/users/registre', (req, res) => {
 })
 
 //login a user 
+app.post('/users/login', passport.authenticate('local', {failureRedirect: 'users/login'}), (req, res) => {
+    res.redirect('/')
+})
 
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
+});
+passport.deserializeUser(function (id, done) {
+  User.findById(id, function (err, user) {
+    done(err, user)
+  })
+});
+
+
+//login a user 
+/*
     app.post('/users/login', (req, res) => {
         if(req.body.email && req.body.password){
             const password = req.body.password
@@ -62,7 +81,7 @@ app.post('/users/registre', (req, res) => {
                 }
             })
         }
-    })
+    })*/
 
 }
 

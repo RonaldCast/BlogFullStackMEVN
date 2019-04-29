@@ -32,4 +32,18 @@ $ npm install passport-jwt --save
 > Paquete para sifrar la contraseña
 $ npm install bcryptjs --save
 
+> Para servir Vue.js de forma estatica de esta manera se usara la aplicacion
+y Node.js se usara como un servidor de paquetes. 
+con el paquete: serve-static
+para usar la aplicacion en un mismo puerto. 
+$ npm install serve-static --save
+
+> connect-history-api-fallback ayuda mucho en la apliacion SPA 
+para que no de error cuando se busque una ruta mediante el 
+el url directamente 
+$ npm install connect-history-api-fallback --save
+
+> Las estrategia local de passport 
+$npm install passport-local -s
+
 
