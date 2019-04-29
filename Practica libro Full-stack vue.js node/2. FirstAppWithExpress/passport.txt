@@ -22,7 +22,7 @@ la carga útil La tercera parte representa la firma
 
 > Para Instalar: JWT (Json Web Token)
 npm install jsonwebtoken --save
-
+"
 > para instalar passport.js
 $ npm install passport --save
 
