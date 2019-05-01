@@ -59,16 +59,17 @@ passport.deserializeUser(function (id, done) {
 
 
 app.post('/users/register', (req, res) => {
+    
     const name = req.body.name;
     const email = req.body.email;
     const password = req.body.password;
     const role = req.body.role;
-    
+    console.log('sdsdsd')
     const newUser = new User({
         name,
         email,
         password,
-        role
+        //role
     });
 
     User.createUser(newUser, (error, user) => {

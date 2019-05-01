@@ -32,13 +32,13 @@ export default {
         async submit() {
             if (this.$refs.form.validate()) {
                 return axios({
-                    methods: 'post',
+                    method: 'post',
                     data:{
                         name: this.name,
                         email: this.email,
                         password: this.password
                     },
-                    url:'/users/register',
+                    url:'/users/register',// /users/register
                     headers:{
                         'Content-Type':'application/json',
                     },
@@ -49,7 +49,7 @@ export default {
                         'You have been succesfully registerd!',
                         'success',
                     );
-                    this.$router.push({name: 'login'});
+                    this.$router.push({name: 'Login'});
                 })
                 .catch((error) => {
                     const message = error.response.data.message;

@@ -82,7 +82,7 @@
       async fetchUsers(){
         return axios({
           method: 'get',
-          url: 'api/current_user'
+          url: '/api/current_user'
         })
         .then((response) => {
             this.current_user = response.data.current_user;

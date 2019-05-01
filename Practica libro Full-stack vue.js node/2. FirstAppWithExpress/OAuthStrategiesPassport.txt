@@ -1,0 +1,25 @@
+>> Se van a implementar las siguientes estrategias 
+
+passport.js Facebook Strategy
+passport.js Twitter Strategy
+passport.js Google Strategy
+passport.js LinkedIn Strategy
+
+> Que es OAuth? s un protocolo de autenticación que permite a 
+los usuarios iniciar sesión a través de diferentes servicios externos.
+
+***** Passport estrategia de Facebook
+
+> instalacion 
+npm i passport-facebook -s 
+
+> Ingresar a facebook developer 
+
+***** Passport estrategia de twitter 
+npm install passport-twitter --save
+
+**** Passport estrategia de google
+ npm install passport-google-oauth20 --save
+page: https://console.developers.google.com/. \
+
+para diferences oauth: https://github.com/jaredhanson/passport/wiki/Strategies

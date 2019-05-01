@@ -1,5 +1,11 @@
 <template>
     <div>
+        <div class="login">
+            <a  @click="facebook" class="btn facebook" >Login with Facebook</a>
+            <a class="btn google" @click="google"> LOGIN WITH GOOGLE</a>
+        </div>
+
+        
         <v-form v-model="valid" ref="form" lazy-validation>
             <v-text-field v-model="email" label="Email" :rules="emailRules" required></v-text-field>
             <v-text-field label="Password" v-model="password" required></v-text-field>
@@ -53,7 +59,42 @@ export default {
         },
         clear(){
             this.$refs.form.reset();
+        },
+
+        facebook(){
+            return axios({
+                method: 'GET', 
+                url:'/login/facebook',
+                headers:{
+                     'Content-Type': 'application/json',
+                     'Access-Control-Allow-Origin': '*'
+                }
+            })
+            .then((response) => {
+                console.log(response.data)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+
+            
+        }, 
+        google(){
+                return axios({
+                                method: 'GET', 
+                                url:'/login/google',
+                                headers:{
+                                    'Content-Type': 'application/json',
+                                }
+                            })
+                            .then((response) => {
+                                console.log(response.data)
+                            })
+                            .catch((error) => {
+                                console.log(error)
+                            })
         }
+
 
     }
 }

@@ -38,7 +38,9 @@ app.use(history())
 
 app.use(morgan('combined'));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+    'Access-Control-Allow-Origin': '*'
+}));
 
 //configuracion de a sesion. 
 app.use(session ({
@@ -108,7 +110,7 @@ router.get('/', (req, res) => {
     message: 'API Initalized'
   });
 });
-
+ 
 
 const port = process.env.API_PORT || 8081;
 app.use('/', router);
