@@ -1,1 +1,12 @@
 > Vuex 
+Nos facilita tener un solo almacen de datos
+donde los demans componente spuedan acceder a el 
+
+> instalacion de Vuex
+npm install -s vuex 
+
+Nota: la forma correcta de acceder a los state es mediante los getters
+las mutaciones se utilizan para realizar modificaciones al estado. 
+
+como las Action son asincrono siempre es favorable usar action 
+para las mutations
