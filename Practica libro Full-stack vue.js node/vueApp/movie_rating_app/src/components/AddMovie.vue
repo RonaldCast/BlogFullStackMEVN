@@ -62,8 +62,18 @@
       submit() {
   
         if (this.$refs.form.validate()) {
+
+          const movie = {
+            name: this.name,
+            description: this.description,
+            release_year: this.release_year,
+            genre: this.genre,
+          }
+          this.$store.dispatch("addMovie", movie);
+          this.$refs.form.reset();
+          this.$router.push( { name: 'Home' } )
           //axios 
-          return axios({
+         /* return axios({
               method: 'post',
               data: {
                 name: this.name,
@@ -94,9 +104,9 @@
                 'Could not add the movie!',
                 'error',
                )
-            })
+            })*/
         }
-        return true
+        //return true
       },
   
       clear() {

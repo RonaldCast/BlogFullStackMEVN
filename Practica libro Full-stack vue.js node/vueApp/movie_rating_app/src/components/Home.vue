@@ -13,7 +13,7 @@
               </div>
             <span class="grey--text">{{ movie.release_year }} ‧ {{movie.genre}} </span>
           </div>
-        </v-card-title>{{movie.description}}<v-card-text>
+        </v-card-title>{{ movie.description }}<v-card-text>
         </v-card-text>
         <v-card-actions>
           <!--<v-btn  flat color="purple">Rate this movie</v-btn>-->
@@ -28,7 +28,26 @@
 <script>
 /* eslint-disable */
 import axios from 'axios'; 
-  export default {
+export default {
+  data(){
+    return{
+
+    }
+  },
+  mounted(){
+      this.$store.dispatch('fetchMovies')
+    },
+  computed:{
+    movies(){
+      return this.$store.getters.fetchMovies;
+    },
+ 
+  }
+}
+
+
+
+  /*export default {
     name: 'HelloWorld',
     data() {
       return {
@@ -55,7 +74,7 @@ import axios from 'axios';
         .catch(() => {})
       }
     },
-  };
+  };*/
 </script>
 
 <style scoped>
