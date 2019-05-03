@@ -1,0 +1,63 @@
+> Unit test: es la prueba que que nos sirve 
+para verificar si el programa funciona como se espera. 
+
+> end-to-end test: es la prueba que verifica todo el flujo de la aplicacion 
+
+Convención para escribir pruebas de extremo a extremo Hay 
+ciertas pautas que deben seguirse al escribir las pruebas 
+de extremo a extremo: los casos de prueba se deben escribir
+ considerando a los usuarios finales y considerando el
+escenario real Se deben crear múltiples casos de prueba para diferentes
+ escenarios se deben reunir los requisitos para todo el software o las 
+ aplicaciones que están involucradas. Para cada requisito, reúna tantas
+  condiciones o escenarios como sea posible. 
+Escriba casos de prueba separados para cada escenario.
+
+> Tecnologia para escribir prueba unitaria:
+ ** Mocha: utilizada para escribir prueba unitaria para JavaScript 
+    https://mochajs.org/
+
+    >Instalar: npm install mocha -g --save-dev
+
+
+ ** Chai: una biblioteca de afirmaciones para Node.JavaScript    
+    http://chaijs.com/
+    La biblioteca de afirmaciones ayuda a comprobar si la
+    expresión pasada es correcta o incorrecta. chai es una biblioteca de afirmación, utilizada con mocha. También podríamos usar la biblioteca
+    de aserción nativa, pero chai agrega mucha flexibilidad.
+     
+     > Instalar: npm install chai -g
+
+
+ ** Sinon: sinon es para espías de prueba, talones y simulacros 
+    http://sinonjs.org/
+
+    > se usa para probar espías, apéndices y
+     simulacros para las pruebas de JavaScript. 
+     Los tres métodos principales que proporciona sinon son 
+     los espías, los apéndices y los simulacros: 
+     * Spies: Spies ayuda a crear funciones falsas. Podemos usar 
+     espías para rastrear si las funciones se ejecutan o no. 
+
+     * Stubs: Stubs nos ayuda a hacer que las funciones devuelvan 
+      lo que queramos. Esto es útil cuando queremos probar
+       diferentes escenarios para la función dada. 
+
+     * Simulacros: los simulacros se utilizan para falsificar 
+     conexiones de red. Ayudan a crear una instancia de clase 
+     ficticia, lo que ayuda a establecer las expectativas predeterminadas.
+
+     > chai-http: se utiliza para simular una solicitud http
+      instalar: npm install chai-http -save
+
+ ** Nightwatch: na biblioteca de JavaScript para escribir de extremo a extremo pruebas 
+    http://nightwatchjs.org/
+ ** karma: es el corredor de prueba para JavaScrip
+    https://karma-runner.github.io/2.0/index.html
+
+
+    ***************Convenciones de nombres
+     La convención de nomenclatura está agregando la parte .spec al nombre de 
+     archivo de cada archivo para el que escribiremos las pruebas
+     Ejemplo: movies.spec.js
+

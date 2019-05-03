@@ -14,7 +14,11 @@ module.exports.controller = (app) =>{
         res.send({movies: movies})
        })
      })
-
+    
+     //send a dummy test
+    app.get('/dummy_test', (req, res) => {
+        res.send({name: 'John'})
+    })
   
     // para ver si el usuario esta autorizado
      /*app.get('/movies', passport.authenticate('jwt', {
