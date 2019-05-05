@@ -51,7 +51,6 @@ module.exports.controller = (app) =>{
     })
 
     app.get('/api/movies/:id', (req, res) => {
-        console.log("dsdsd")
         Movie.findById(
             req.params.id, 
             'name description release_year genre',

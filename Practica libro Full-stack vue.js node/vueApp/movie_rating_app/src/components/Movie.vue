@@ -12,7 +12,7 @@
                         </span>
                     </div>
                 </v-card-title>
-                <h6 class="card-title" v-if="currente_user" @click="rate">Rate this movie</h6>
+                <h6 id="rate_movie" class="card-title" v-if="currente_user" @click="rate">Rate this movie</h6>
                 <v-card-text>
                     {{ movie.description }}
                 </v-card-text>

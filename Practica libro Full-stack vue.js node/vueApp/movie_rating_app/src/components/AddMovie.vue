@@ -3,23 +3,23 @@
   
   
   
-    <v-text-field label="Movie Name" v-model="name" :rules="nameRules" required></v-text-field>
+    <v-text-field id="name" label="Movie Name" v-model="name" :rules="nameRules" required></v-text-field>
   
   
   
-    <v-text-field name="input-7-1" label="Movie Description" v-model="description" multi-line required :rules="releaseRules"></v-text-field>
+    <v-text-field id="description" name="input-7-1" label="Movie Description" v-model="description" multi-line required :rules="releaseRules"></v-text-field>
   
   
   
-    <v-select label="Movie Release Year" v-model="release_year" :items="years"></v-select>
+    <v-select id="release_year" label="Movie Release Year" v-model="release_year" :items="years"></v-select>
   
   
   
-    <v-text-field label="Movie Genre" v-model="genre" required :rules="genreRules"></v-text-field>
+    <v-text-field id="genre" label="Movie Genre" v-model="genre" required :rules="genreRules"></v-text-field>
   
   
   
-    <v-btn @click="submit" :disabled="!valid">
+    <v-btn id="add_movie_btn" @click="submit" :disabled="!valid">
   
       submit
   

@@ -1,4 +1,6 @@
 // 1. start the dev server using production config
+// runner para que Nightwatch ejecute la prueba
+
 process.env.NODE_ENV = 'testing'
 
 const webpack = require('webpack')

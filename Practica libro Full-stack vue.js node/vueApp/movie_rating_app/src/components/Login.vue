@@ -7,10 +7,10 @@
 
         
         <v-form v-model="valid" ref="form" lazy-validation>
-            <v-text-field v-model="email" label="Email" :rules="emailRules" required></v-text-field>
-            <v-text-field label="Password" v-model="password" required></v-text-field>
-            <v-btn @click="submit" :disabled="!valid">submit</v-btn>
-            <v-btn @click="clear"> clear </v-btn>
+            <v-text-field id="email" v-model="email" label="Email" :rules="emailRules" required></v-text-field>
+            <v-text-field id="password" label="Password" v-model="password" required></v-text-field>
+            <v-btn id="login" @click="submit" :disabled="!valid">submit</v-btn>
+            <v-btn id="clear_input" @click="clear"> clear </v-btn>
         </v-form>
     </div>
 </template>
